@@ -1,0 +1,48 @@
+*
+{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family: 'Muli', sans-serif;
+}
+.nav_style 
+{
+	background-color: #a26bfe;
+}
+.nav_style a{color:white;}
+ .main_header
+ {
+ 	height: 450px;
+ 	width: 100%;
+ }
+
+ .rightside h1
+ {
+ 	font-size: 3rem;
+ }
+ .leftside img{ animation: heartbeat 5s linear infinite; }
+ 
+ @keyframes heartbeat
+ {
+ 	0%
+ 	{
+ 		transform: scale(.75);
+ 	}
+ 	20%
+ 	{
+ 		transform: scale(1);
+ 	}
+ 	40%
+ 	{
+ 		transform: scale(.75);
+ 	}
+ 	60%
+ 	{
+ 		transform: scale(1);
+ 	}
+ 	100%
+ 	{
+ 		transform: scale(0.75);
+ 	}
+ }
+ }
