@@ -1,0 +1,145 @@
+  body,html{
+    height:100vh;
+    background-color:black;;
+}
+h1{
+    color:white;
+    text-align:center;
+}
+/* body{
+    margin:0;
+    display:grid; 
+    grid-template-columns: auto 31% 31% 31%;
+    grid-template-rows: 8% 40% auto;
+    grid-template-areas:
+    "sidebar header header header"
+    "sidebar section1 section2 section3"
+    "sidebar main main main" ;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+} */
+body{
+    margin:0;
+    display:grid; 
+    grid-template-columns:100%;
+    grid-template-rows:repeat(auto,5);
+    grid-template-areas:
+    "sidebar"
+   "header"
+   "section1"
+   "section2"
+   "section3"
+   "section4";
+   /* "main"; */
+     grid-column-gap: 10px;
+    grid-row-gap: 10px;
+} 
+aside{
+    grid-area:sidebar;
+    background-color:rgba(37, 37, 37, 0.8);
+}
+header{
+    grid-area:header;
+    text-align:center;
+    background-color:rgba(37, 37, 37, 0.8);
+
+}
+.section1{
+    grid-area:section1;
+    background-color:rgba(37, 37, 37, 0.8);
+
+    grid-gap:20px;
+}
+.section2{
+    grid-area:section2;
+    background-color:rgba(37, 37, 37, 0.8);
+
+}
+.section3{
+    grid-area:section3;
+    background-color:rgba(37, 37, 37, 0.8);
+
+}
+.section4{
+    grid-area:section4;
+    background-color:rgba(37, 37, 37, 0.8)
+
+}
+/* main{
+    grid-area:main;
+    background-color: brown
+} */
+
+/* to make the front responsive */
+@media only screen and (min-width:768px){
+
+    body{
+        margin:0;
+        display:grid; 
+        grid-template-columns: auto 47% 47%;
+        grid-template-rows: 8% 46% 46%;
+        grid-template-areas:
+        "sidebar header header "
+        "sidebar section1 section2"
+        "sidebar section3 section4" ;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+
+}
+
+
+/*total world*/
+.world-flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.worldConfirmed{
+border:2px solid skyblue;
+}
+.worldRecovered{
+border:2px solid lightgreen;
+}
+.worldDeath{
+border:2px solid red;
+}
+.world-flex-container > div {
+color:white;
+width: 300px;
+margin: 40px;
+text-align: center;
+line-height: 115px;
+font-size: 30px;
+}
+
+
+/*india total*/
+.india-flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.indiaConfirmed{
+border:2px solid skyblue;
+}
+.indiaRecovered{
+border:2px solid lightgreen;
+}
+.indiaDeath{
+border:2px solid red;
+}
+.india-flex-container > div {
+color:white;
+width: 300px;
+margin: 40px;
+text-align: center;
+line-height: 115px;
+font-size: 30px;
+}
