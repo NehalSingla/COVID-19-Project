@@ -1,271 +1,106 @@
-<!DOCTYPE html >
-<html >
+<<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<title>Chat - Customer Module</title>
-<style>
-    body {
-    font:12px arial;
-    color: #222;
-    text-align:center;
-    padding:35px; }
-  
-form, p, span {
-    margin:0;
-    padding:0; }
-  
-input { font:12px arial; }
-  
-a {
-    color:#0000FF;
-    text-decoration:none; }
-  
-    a:hover { text-decoration:underline; }
-  
-#wrapper {
-    margin:0 auto;
-    padding-bottom:25px;
-    background:#EBF4FB;
-    width:804px;
-    height:50%;
-    border:1px solid #ACD8F0; }
-  
+  <style>
+    div#test {
 
-  
-#chatbox {
-    text-align:left;
-    margin:0 auto;
-    margin-bottom:25px;
-    /*padding:10px;*/
-    background:#fff;
-    height:470px;
-    width:630px;
-    border:1px solid #ACD8F0;
-    overflow:auto; 
-      scroll-behavior: smooth;
+     border:#000 1px solid;
+     padding: 10px 40px 40px 40px;
+     color:white;
+     font-size:25px;
 
-  }
-  
-#usermsg {
-    width:395px;
-    border:1px solid #ACD8F0; }
-  
-#submit { width: 60px; }
-  
-.error { color: #ff0000; }
-  
-#menu { padding:12.5px 25px 12.5px 25px; }
-  
-.welcome { float:left; }
-  
-.logout { float:right; }
-  
-
-#ques
-{
- 
-  padding : 10px 10px 5px 5px;
 }
-.box
+#main
 {
-    width:20%;
-    padding:10px;
-    border-radius: 35px;
-    background-color: #ADD8E6;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-color: black;
 
 }
 
+  </style>
 
-</style>
 </head>
-<body>
- 
-<div id="wrapper">
-    <div id="menu">
-        <p class="welcome">Welcome, <b></b></p>
-        <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
-        <div style="clear:both"></div>
-    </div>
-     
-   <div id="chatbox">
-       <div class="  d-flex justify-content-around align-items-center pt-3">
-          <div style="background-color:#ADD8E6;border-radius: 15px;padding: 5px 5px 5px 5px;" id="main">
-         </div>
-       </div>
-       <div class=" d-flex justify-content-around align-items-center pt-3" id="parent">
-        
-       </div> 
-     <div class=" d-flex justify-content-end align-items-center pt-3" >
-        
-       </div> 
-
-
-   </div>
-
-        <input name="usermsg" type="text" id="usermsg" size="63" /> 
- <button name="submitmsg" type="button"  id="submitmsg"  onclick="submit_ans()"  >NEXT</button>
-  <button name="submitmsg" type="submit"  id="submit" onclick="report()"  >RESULT</button>
-
+<body style="background-color: black;">
+  
+  <div id="main">
+<h2 id="test_status" style="color:white;"></h2>
+<div id="test"></div>
 
 </div>
 
+
 <script>
 
-var k=0,n=0,count=0;
-var arr;
-   var result=[];
-var usermsg;
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC,chD, correct = 0;
+var questions = [
+    ["What is your Gender?", "Male", "Female", "Other","Not Willing To Tell", "D"],
+    
+    ["Are you experiencing any of the following symptoms?", "Cough", "Fever", 
+    "Difficulty in Breathing", "None","D"],
 
-function add()
-{
-     
-    var request= new XMLHttpRequest();
-    request.open('GET','/ques');
-    request.send();
+    ["Have you ever had any of the following?", "Diabetes", "Hypertension", "Heart Disease","None",
+     "D"],
 
- request.onload=function()
+    ["Do you have any travelling history in last 30 days?", "NO", "Yes", "Before 30 Days", "Travelled with Precaution","A"],
+    ["Which of the following apply to you?","I have recently interacted or lived with someone who has tested positive for COVID-19","I am a healthcare worker and i examind covid-19 confirmed case without protective gear","COVID-19 patient In my locality"," None","D"],
+
+
+];
+
+function _(x) {
+
+   return document.getElementById(x);
+
+}
+
+function renderQuestion () {
+
+   test = _("test");
+   if(pos >= questions.length) {
+    if(correct==4)
     {
-      arr=JSON.parse(request.responseText);
-       console.log(arr);
-
-       addTOdom(arr,k);
+     test.innerHTML = "<h2>YOU ARE SAFE<br>STAY HEALTHY! </h2>";
+    }
+    else
+    {
+      test.innerHTML = "<h2>KINDLY CONSULT A DOCTOR </h2>";
 
     }
-
-}
-function addTOdom(arr,k)
-{
-
-console.log('dom');
-var div1 = document.createElement('div');
-  div1.setAttribute("class","d-flex justify-content-around  pt-3");
-
-  var div2 = document.createElement('div');
-  div2.setAttribute("style","background-color:#ADD8E6;border-radius: 15px;padding: 5px 5px 5px 5px;margin-bottom:5px");
-
-
-  var h3 = document.createElement('h3');
-  h3.setAttribute("id","ques");
-  h3.innerHTML = arr[k].question;
-
-  div2.appendChild(h3);
-  div1.appendChild(div2);
-
-  var div3 = document.createElement('div');
-  div3.setAttribute("class","d-flex justify-content-around  pt-3");
-
-  var div4 = document.createElement('div');
-  div4.setAttribute("class","box");
-
-  var p1 = document.createElement('p');
-  p1.innerHTML = arr[k].option1;
-
-  div4.appendChild(p1);
-
-  var div5 = document.createElement('div');
-  div5.setAttribute("class","box");
-
-  var p2 = document.createElement('p');
-  p2.innerHTML = arr[k].option2;
-
-  div5.appendChild(p2);
-
-  var div6 = document.createElement('div');
-  div6.setAttribute("class","box");
-
-  var p3 = document.createElement('p');
-  p3.innerHTML = arr[k].option3;
-
-  div6.appendChild(p3);
-
-  var div7 = document.createElement('div');
-  div7.setAttribute("class","box");
-
-  var p4 = document.createElement('p');
-  p4.innerHTML = arr[k].option4;
-
-  div7.appendChild(p4);
-
-  div3.appendChild(div4);
-  div3.appendChild(div5);
-  div3.appendChild(div6);
-  div3.appendChild(div7);
-
-  document.getElementById("chatbox").appendChild(div1);
-  document.getElementById("chatbox").appendChild(div3);
-
-  
+     _("test_status").innerHTML = "Test Completed";
+     pos = 0;
+     correct = 0;
+     return false;
+     }
 
 
 
-}
+   _("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+  question = questions[pos] [0];
+  chA = questions[pos] [1];
+  chB = questions[pos] [2];
+  chC = questions[pos] [3];
+  chD =questions[pos] [4]
+  test.innerHTML = "<h3>"+question+"</h3>";
+  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>"; 
+   test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>"; 
+  test.innerHTML +="<button onclick='checkAnswer()'>submit Answer</button>"; 
+   }
 
-function display_ans()
-{
-  var chatbox=document.getElementById('chatbox');
-  var div1 = document.createElement('div');
-  div1.setAttribute("class","d-flex justify-content-end  pt-3");
-
-  var div2 = document.createElement('div');
-  div2.setAttribute("class","box");
-  div2.setAttribute("id","answer");
-  var p1 = document.createElement('p');
-  p1.innerHTML = usermsg;
-
-  div2.appendChild(p1);
-  div1.appendChild(div2);
-  chatbox.appendChild(div1);
-
-}
-
-function submit_ans()
-{
-           usermsg= document.getElementById('usermsg').value;
-
-            if(usermsg=='')
-            {
-              alert('field is empty');
-              return false;
-            }
-            display_ans();
-         
-          result[n]=usermsg;
-          n++;
-
-  console.log("ty");
-
-             k++;
-             addTOdom(arr,k); 
-          
-
-}
-function report()
-{
-  for(var i=0;i<result.length;i++)
-  {
-    if(result[i]=='no')
-      count++;
-  }
-
-  if(count==4)
-    alert('u are fine');
-  else
-    alert('consult');
-}
-
-add();
-
+   function checkAnswer() {
+     choices = document.getElementsByName("choices");
+     for (var i=0; i<choices.length; i++) {
+     if(choices[i].checked) {
+       choice = choices[i].value;
+   }
+   }
+    if(choice == questions[pos] [5]) {
+     correct++;
+     }
+     pos++;
+     renderQuestion();
+   }
+   window.addEventListener("load", renderQuestion, false);
 </script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-
 </body>
-</html>
+</html> 

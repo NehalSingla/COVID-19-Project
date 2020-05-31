@@ -71,12 +71,13 @@ header{
 } */
 
 /* to make the front responsive */
-@media only screen and (min-width:768px){
+@media only screen and (min-width:600px){
 
     body{
         margin:0;
         display:grid; 
         grid-template-columns: auto 47% 47%;
+      /*  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
         grid-template-rows: 8% 46% 46%;
         grid-template-areas:
         "sidebar header header "
