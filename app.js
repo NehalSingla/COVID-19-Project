@@ -81,4 +81,9 @@ app.get('/faq_page',function(req,res)
 {
 	res.render('faq');
 })
+
+app.get('/news_page',function(req,res)
+{
+	res.render('news_page');
+})
 app.listen(port,()=>{console.log("Running on port "+port);});
