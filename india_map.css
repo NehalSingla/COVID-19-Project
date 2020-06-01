@@ -1,0 +1,69 @@
+body,html{
+    height:100vh;
+    background-color:black;;
+}
+h1{
+    color:white;
+    text-align:center;
+}
+h2{
+    color:white;
+    text-align:center;
+}
+
+header{
+    grid-area:header;
+    text-align:center;
+    /* background-color:rgba(37, 37, 37, 0.8); */
+
+}
+.section1{
+    grid-area:section1;
+    /* background-color:rgba(37, 37, 37, 0.8); */
+
+    grid-gap:20px;
+}
+.section2{
+    grid-area:section2;
+    /* background-color:rgba(37, 37, 37, 0.8); */
+
+
+}
+body{
+    margin:0;
+    display:grid; 
+    grid-template-columns: auto auto;
+     grid-template-rows: 8% auto;
+    grid-template-areas:
+    "header header"
+    "section1 section2";
+
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.responsiveTable{
+    height:400px;
+    width:400px;
+    padding-left:40px;
+    padding-top:20px;
+}
+
+/* map style */
+
+#container {
+    height: 900px; 
+    min-width: 310px; 
+    max-width: 800px; 
+    margin: 0 auto; 
+    background-color: black;
+}
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+    background-color: black;
+}
+.div1{
+    background-color: black;
+}

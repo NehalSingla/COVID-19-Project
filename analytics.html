@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+        <title>ANALYTICS</title>
+        <link rel="stylesheet" href="analyticstyle.css">
+
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <!-- to get total confirmed recovered and death cases of world as well as india -->
+        <script src="total_data.js"></script>
+        <header><h1 style="color:white;">COVID-19 INDIA ANALYTICS</h1></header>
+        <section class="section1"><h1>TOTAL CONFIRMED CASES</h1>
+
+
+         <div style="height:600px; width:600px">
+                <canvas id="confirmed-line-chart"></canvas>
+            </div>
+        </section>
+        <section class="section2"><h1>TOTAL RECOVERED CASES</h1>
+
+        <div style="height:600px;width:600px;">
+                <canvas id="recovered-line-graph"></canvas>
+            </div>
+           
+        </section>
+        <section class="section3"><h1>TOTAL DEATHS</h1>
+            <div style="height:600px;width:600px;">
+                    <canvas id="death-line-graph"></canvas>
+                </div>
+        
+        </section>
+        <section class="section4"><h1>DECEASED GENDER RATIO</h1>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+            <div style="height:600px;width:600px;">
+        <canvas id="genderChart"></canvas>
+        <script>
+                        const GCHART =document.getElementById('genderChart');
+
+            async function getGender()
+            {
+                const genderjsondata=await fetch('https://api.covid19india.org/deaths_recoveries.json');
+
+                //console.log(jsondata);
+
+                const gjsdata=await genderjsondata.json();
+                console.log(gjsdata);
+
+                let m_count=0;
+                let f_count=0;
+                for(var i=0;i<gjsdata.deaths_recoveries.length;i++)
+                {
+                    if(gjsdata.deaths_recoveries[i].gender=="M")
+                    {
+                        m_count++;
+                    }
+                    if(gjsdata.deaths_recoveries[i].gender=="F")
+                    {
+                        f_count++;
+                    }
+
+                }
+                console.log(m_count);
+                console.log(f_count);
+
+            //     total_indians=jsdata.data.summary.confirmedCasesIndian;
+            //     //console.log(total_indians);
+            //     total_foreginers=jsdata.data.summary.confirmedCasesForeign;
+            //     //console.log(total_foreginers);
+                 var data1={
+                labels:["MALES","FEMALES"],
+                datasets:[
+                    {
+                        label :"Gender",
+                        data:[ m_count,f_count],
+                        backgroundColor: [
+                            "#B0E0E6",
+                            "#FFC0CB"
+                        ]
+                    }
+                ]
+            };
+               let pieChart = new Chart( GCHART,{
+                   type:'doughnut',
+                   data:data1,
+                   options:{}
+               });
+            
+            }
+
+            getGender();
+
+        </script>
+            </section>
+            <section class="section5"><h1>TOTAL SAMPLES TESTED</h1>
+
+                <div style="height:600px; width:600px">
+                        <canvas id="testschart"></canvas>
+                    </div>
+            </section>
+            <section class="section6"><h1>NATIONALITY</h1>
+
+
+            <div style="height:600px;width:600px ;">
+                    <canvas id="Nationality"></canvas>
+                    </div>
+
+            <script>
+                                        const NCHART =document.getElementById('Nationality');
+
+            async function  getNationality()
+            {
+                const jsondata1=await fetch('https://api.rootnet.in/covid19-in/stats/latest');
+
+                //console.log(jsondata);
+
+                const jsdata1=await jsondata1.json();
+                console.log(jsdata1);
+
+                total_indians=jsdata1.data.summary.confirmedCasesIndian;
+                //console.log(total_indians);
+                total_foreginers=jsdata1.data.summary.confirmedCasesForeign;
+                //console.log(total_foreginers);
+                 var data1={
+                labels:["Indians","Foreginers"],
+                datasets:[
+                    {
+                        label :"Cases",
+                        data:[ total_indians,total_foreginers],
+                        backgroundColor: [
+                            "#800080",
+                            "#FFFF00"
+                        ]
+                    }
+                ]
+            };
+               let pieChart = new Chart( NCHART,{
+                   type:'doughnut',
+                   data:data1,
+                   options:{}
+               });
+            
+            }
+
+            getNationality();
+
+            </script>
+            </section>
+            <script>
+                    var confirmed_chart=document.getElementById("confirmed-line-chart");
+                    var RecoveredLine=document.getElementById("recovered-line-graph");
+                    var Death_Line=document.getElementById("death-line-graph");
+                    var test_chart=document.getElementById("testschart");
+
+                    // const NCHART =document.getElementById('Nationality');
+
+
+                    async function CovidData()
+                    {
+                        const jsdata =await fetch('https://api.covid19india.org/data.json');
+                        const data=await jsdata.json();
+                        console.log(data);
+                        var dates=[];
+                        var confirmed_cases=[];
+                        var recovered_patients=[];
+                        var deaths=[];
+
+                        for(var i=0;i<data.cases_time_series.length;i++)
+                        {
+                            confirmed_cases.push(data.cases_time_series[i].totalconfirmed);
+                        }
+                        for(var i=0;i<data.cases_time_series.length;i++)
+                        {
+                            dates.push(data.cases_time_series[i].date);
+                        }
+                        for(var i=0;i<data.cases_time_series.length;i++)
+                        {
+                            recovered_patients.push(data.cases_time_series[i].totalrecovered);
+                        }
+                        for(var i=0;i<data.cases_time_series.length;i++)
+                        {
+                            deaths.push(data.cases_time_series[i].totaldeceased);
+                        }
+
+                        var test_dates=[];
+                        var tests=[];
+                        for(var i=0;i<data.tested.length;i++)
+                        {
+                            tests.push(data.tested[i].totalsamplestested);
+                        }
+                        for(var i=0;i<data.tested.length;i++)
+                        {
+                            test_dates.push(data.tested[i].updatetimestamp);
+                        }
+
+
+               
+
+                        var confirmed_data={
+                            labels: dates,
+                            datasets:[
+                                {
+                                    label:"confirmedCases",
+                                    data: confirmed_cases,
+                                     backgroundColor:"#19B8FC",
+                                    borderColor:"#19B8FC",
+                                    // fill:false,
+                                    minBarLength:100
+                                }
+                                ]
+                        }
+                        var option={
+                            title:{
+                                display:true,
+                                position:"top",
+                                // text:"Total Confirmed Cases",
+                                fontSize:20,
+                                fontColor:"#000000"
+        
+                            },
+                            legend:{
+                                display:true
+                            }
+                        };
+                        let confirmed_cases_chart=new Chart(confirmed_chart,{
+                            type:'bar',
+                            data:confirmed_data,
+                            options:option
+                        });
+
+
+                var recovered_data={
+                    labels:dates,
+                    datasets:[
+                        {
+                            label:"RecoveredCases",
+                            data:recovered_patients,
+                            backgroundColor:"#0ECB0E",
+                            borderColor:"#0ECB0E",
+                            //  fill:true,
+                            minBarLength:100
+                        }
+                    ]
+                }
+                var option={
+                    title:{
+                        display:true,
+                        position:"top",
+                        // text:"Total Recovered Cases",
+                        fontSize:20,
+                        fintColor:"#000000"
+                    },
+                    legend:{
+                        display:true,
+                        // position:"bottom"
+                    },
+                    scales: {
+        yAxes: [{
+            ticks: {
+                min :0,
+                max:60000,
+                stepSize: 10000
+            }
+        }]
+    }
+                }
+                var RecoveredlineChart=new Chart(RecoveredLine,{
+                    type:'bar',
+                    data:recovered_data,
+                    options:option
+                });
+
+
+                var data1={
+                    labels:dates,
+                    datasets:[
+                        {
+                            label:"Deaths",
+                            data:deaths,
+                            backgroundColor:"#D30606",
+                            borderColor:"#D30606",
+                            //  fill:true,
+                            //  lineTension:0,
+                            //  pointRadius:0.5
+                           minBarLength:100
+                        }
+                    ]
+                }
+                var option={
+                    title:{
+                        display:true,
+                        position:"top",
+                        // text:"Total Deaths",
+                        fontSize:20,
+                        fontColor:"#000000"
+                    },
+                    legend:{
+                        display:true,
+                        position:"top"
+                    },
+                    scales: {
+        yAxes: [{
+            ticks: {
+                min :0,
+                max:60000,
+                stepSize: 10000
+            }
+        }]
+        // gridLines:{
+        //     color:[
+        //         rgba('0','0','0','0')
+        //     ]
+        // }
+    }
+
+                }
+                var DeathlineChart=new Chart(Death_Line,{
+                    type:'bar',
+                    data:data1,
+                    options:option
+                });
+
+
+
+                 var test_data={
+                    labels: test_dates,
+                    datasets:[
+                        {
+                            label:"SamplesTested",
+                            data:tests,
+                             backgroundColor:"#FF7F50",
+                            borderColor:"#FF7F50",
+                            // fill:false,
+                            minBarLength:100
+                        }
+                        ]
+                }
+                var option={
+                    title:{
+                        display:true,
+                        position:"top",
+                        // text:"Total Confirmed Cases",
+                        fontSize:20,
+                        fontColor:"#000000"
+
+                    },
+                    legend:{
+                        display:true
+                    }
+                };
+                let test_cases_chart=new Chart(test_chart,{
+                    type:'bar',
+                    data:test_data,
+                    options:option
+                });
+            
+                 
+                    }
+                    CovidData();
+                </script>
+    </body>
+</html>
