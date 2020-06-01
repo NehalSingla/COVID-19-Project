@@ -36,4 +36,9 @@ app.get('/news_page',function(req,res)
 {
 	res.render('news_page');
 })
+
+app.get('/precaution_page',function(req,res)
+{
+	res.render('precautions');
+})
 app.listen(port,()=>{console.log("Running on port "+port);});
