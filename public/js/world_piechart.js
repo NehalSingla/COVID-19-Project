@@ -3,16 +3,18 @@ const WorldPieCHART =document.getElementById('PIEChart');
 
 async function getCovidAPI()
 {
+            var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+            targetUrl = 'https://thevirustracker.com/free-api?global=stats'
+   
+            const jsondata2=await fetch(proxyUrl + targetUrl);
 
-const jsondata2=await fetch('https://api.covid19api.com/summary');
-                const jsdata2=await jsondata2.json();
-                console.log(jsdata2);
+            const wjsdata=await jsondata2.json();
 
-                const wtc=jsdata2.Global.TotalConfirmed;
+                const wtc=wjsdata.results[0].total_cases;
                
-                const wtr=jsdata2.Global.TotalRecovered;
+                const wtr=wjsdata.results[0].total_recovered;
                
-                const wtd=jsdata2.Global.TotalDeaths;
+                const wtd=wjsdata.results[0].total_deaths;
                 var data1={
                 labels:["Confirmed","Recovered","Deaths"],
                 datasets:[

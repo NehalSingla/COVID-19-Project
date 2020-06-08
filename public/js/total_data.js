@@ -1,16 +1,9 @@
-
-            async function getCovidAPI()
-            {
+async function getCovidAPI(){
 
                  /*india data*/ 
-                const jsondata=await fetch('https://api.covid19india.org/data.json');
+        const jsondata=await fetch('https://api.covid19india.org/data.json');
+        const jsdata=await jsondata.json();
 
-                //console.log(jsondata);
-
-                const jsdata=await jsondata.json();
-                console.log(jsdata);
-
-               
                 const tc=jsdata.statewise[0].confirmed;
                 document.getElementById("itotalConfirmed").innerHTML=tc;
                 const tr=jsdata.statewise[0].recovered;
@@ -21,18 +14,22 @@
 
 
                 /*world data*/ 
-                const jsondata2=await fetch('https://api.covid19api.com/summary');
+                var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+                targetUrl = 'https://thevirustracker.com/free-api?global=stats'
+               
+                const jsondata2=await fetch(proxyUrl + targetUrl);
                 const wjsdata=await jsondata2.json();
-                console.log(wjsdata);
+                console.log(wjsdata.results[0]);
 
-                const wtc=wjsdata.Global.TotalConfirmed;
+                const wtc=wjsdata.results[0].total_cases;
                 document.getElementById("wtotalConfirmed").innerHTML=wtc;
-                const wtr=wjsdata.Global.TotalRecovered;
-                document.getElementById("wtotalRecovered").innerHTML=wtr;
-                const wtd=wjsdata.Global.TotalDeaths;
 
+                const wtr=wjsdata.results[0].total_recovered;
+                document.getElementById("wtotalRecovered").innerHTML=wtr;
+
+                const wtd=wjsdata.results[0].total_deaths;
                 document.getElementById("wtotaldeaths").innerHTML=wtd;
             
-            }
+}
 
-            getCovidAPI();
+getCovidAPI();

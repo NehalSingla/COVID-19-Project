@@ -1,106 +1,137 @@
-<<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-  <style>
-    div#test {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+<title>HOMEPAGE</title>
 
-     border:#000 1px solid;
-     padding: 10px 40px 40px 40px;
-     color:white;
-     font-size:25px;
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<link rel="stylesheet" href="css/partials.css">
+<link rel="stylesheet" href="css/mainstyle.css">
+
+<style>
+  div#test {
+
+   border:#000 1px solid;
+   padding: 10px 40px 40px 40px;
+   color:white;
+   font-size:25px;
 
 }
 #main
 {
-  background-color: black;
+background-color: black;
 
 }
 
-  </style>
+</style>
 
 </head>
-<body style="background-color: black;">
-  
-  <div id="main">
-<h2 id="test_status" style="color:white;"></h2>
-<div id="test"></div>
 
-</div>
+<body>
+<%- include('partials/topbar.ejs') %>
+<div id="viewscreen" >
+    <%- include('partials/sidebar.ejs') %>
+        <div id="rightview" >
+            <div class="container" style="padding:0;">
+                <div class="row">
+                    <div class="col-lg-12" style="padding:0">
+                        <div class="container">
+                            <div class="col-sm-3"></div>
 
+                            <header style="margin-top: 5%;"><h1>COVID-19 Chat</h1></header>
+                            <div id="main">
+                              <h2 id="test_status" style="color:white;"></h2>
+                              <div id="test"></div>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
 
 <script>
 
-var pos = 0, test, test_status, question, choice, choices, chA, chB, chC,chD, correct = 0;
-var questions = [
-    ["What is your Gender?", "Male", "Female", "Other","Not Willing To Tell", "D"],
-    
-    ["Are you experiencing any of the following symptoms?", "Cough", "Fever", 
-    "Difficulty in Breathing", "None","D"],
-
-    ["Have you ever had any of the following?", "Diabetes", "Hypertension", "Heart Disease","None",
-     "D"],
-
-    ["Do you have any travelling history in last 30 days?", "NO", "Yes", "Before 30 Days", "Travelled with Precaution","A"],
-    ["Which of the following apply to you?","I have recently interacted or lived with someone who has tested positive for COVID-19","I am a healthcare worker and i examind covid-19 confirmed case without protective gear","COVID-19 patient In my locality"," None","D"],
-
-
-];
-
-function _(x) {
-
-   return document.getElementById(x);
-
-}
-
-function renderQuestion () {
-
-   test = _("test");
-   if(pos >= questions.length) {
-    if(correct==4)
-    {
-     test.innerHTML = "<h2>YOU ARE SAFE<br>STAY HEALTHY! </h2>";
-    }
-    else
-    {
-      test.innerHTML = "<h2>KINDLY CONSULT A DOCTOR </h2>";
-
-    }
-     _("test_status").innerHTML = "Test Completed";
-     pos = 0;
-     correct = 0;
-     return false;
+  var pos = 0, test, test_status, question, choice, choices, chA, chB, chC,chD, correct = 0;
+  var questions = [
+      ["What is your Gender?", "Male", "Female", "Other","Not Willing To Tell", "D"],
+      
+      ["Are you experiencing any of the following symptoms?", "Cough", "Fever", 
+      "Difficulty in Breathing", "None","D"],
+  
+      ["Have you ever had any of the following?", "Diabetes", "Hypertension", "Heart Disease","None",
+       "D"],
+  
+      ["Do you have any travelling history in last 30 days?", "NO", "Yes", "Before 30 Days", "Travelled with Precaution","A"],
+      ["Which of the following apply to you?","I have recently interacted or lived with someone who has tested positive for COVID-19","I am a healthcare worker and i examind covid-19 confirmed case without protective gear","COVID-19 patient In my locality"," None","D"],
+  
+  
+  ];
+  
+  function _(x) {
+  
+     return document.getElementById(x);
+  
+  }
+  
+  function renderQuestion () {
+  
+     test = _("test");
+     if(pos >= questions.length) {
+      if(correct==4)
+      {
+       test.innerHTML = "<h2>YOU ARE SAFE<br>STAY HEALTHY! </h2>";
+      }
+      else
+      {
+        test.innerHTML = "<h2>KINDLY CONSULT A DOCTOR </h2>";
+  
+      }
+       _("test_status").innerHTML = "Test Completed";
+       pos = 0;
+       correct = 0;
+       return false;
+       }
+  
+  
+  
+     _("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+    question = questions[pos] [0];
+    chA = questions[pos] [1];
+    chB = questions[pos] [2];
+    chC = questions[pos] [3];
+    chD =questions[pos] [4]
+    test.innerHTML = "<h3>"+question+"</h3>";
+    test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+    test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+    test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>"; 
+     test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>"; 
+    test.innerHTML +="<button onclick='checkAnswer()'>submit Answer</button>"; 
      }
-
-
-
-   _("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
-  question = questions[pos] [0];
-  chA = questions[pos] [1];
-  chB = questions[pos] [2];
-  chC = questions[pos] [3];
-  chD =questions[pos] [4]
-  test.innerHTML = "<h3>"+question+"</h3>";
-  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
-  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
-  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>"; 
-   test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>"; 
-  test.innerHTML +="<button onclick='checkAnswer()'>submit Answer</button>"; 
-   }
-
-   function checkAnswer() {
-     choices = document.getElementsByName("choices");
-     for (var i=0; i<choices.length; i++) {
-     if(choices[i].checked) {
-       choice = choices[i].value;
-   }
-   }
-    if(choice == questions[pos] [5]) {
-     correct++;
+  
+     function checkAnswer() {
+       choices = document.getElementsByName("choices");
+       for (var i=0; i<choices.length; i++) {
+       if(choices[i].checked) {
+         choice = choices[i].value;
      }
-     pos++;
-     renderQuestion();
-   }
-   window.addEventListener("load", renderQuestion, false);
-</script>
-</body>
-</html> 
+     }
+      if(choice == questions[pos] [5]) {
+       correct++;
+       }
+       pos++;
+       renderQuestion();
+     }
+     window.addEventListener("load", renderQuestion, false);
+  </script>

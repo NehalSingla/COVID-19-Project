@@ -8,7 +8,8 @@ function fetchAlldata()
 	req.send();
     req.onload=function()
     {
-        arr=JSON.parse(req.responseText);
+		arr=JSON.parse(req.responseText);
+		console.log(arr);
         fetchcountries(arr.Countries);
     }
 

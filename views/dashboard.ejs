@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+<title>HOMEPAGE</title>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<link rel="stylesheet" href="css/partials.css">
+<link rel="stylesheet" href="css/mainstyle.css">
+
+</head>
+
+<body>
+<%- include('partials/topbar.ejs') %>
+<div id="viewscreen" >
+    <%- include('partials/sidebar.ejs') %>
+        <div id="rightview" >
+            <div class="container" style="padding:0;">
+                <div class="row">
+                    <div class="col-lg-12" style="padding:0">
+                        <div class="container">
+                            <div class="col-sm-3"></div>s
+
+                            <header style="margin-top: 5%;"><h1>COVID-19 DASHBOARD</h1></header>
+                            <section class="section1"><h1>GLOBAL COVID-19 CASES</h1>
+                                <div class="world-flex-container">
+                                        <div>
+                                            <p>TOTAL CONFIRMED</p>
+                                             <div class="worldConfirmed" id="wtotalConfirmed">
+                                            </div>
+                                         </div>
+                                        <div>
+                                            <p>TOTAL RECOVERED</p>
+                                        <div class="worldRecovered"id="wtotalRecovered"></div>
+                                           
+                                        </div>
+                                        <div>
+                                            <p>TOTAL DEATHS </p>
+                                        <div class="worldDeath" id="wtotaldeaths"></div>
+                                            
+                                        </div>  
+                                      </div>
+                            </section>
+
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                            <script src="js/total_data.js"></script>
+
+                            <section class="section2"><h1>GLOBAL</h1>
+                                <br>
+                                <div style="height:80%; width:80%;align-content:center;">
+                                        <canvas id="PIEChart"></canvas>
+                                </div>
+                                <script src="js/world_piechart.js"></script>      
+                            </section>
+
+                            <section class="section3"><h1>INDIA COVID-19 CASES</h1>
+        
+                                <div class="india-flex-container">
+                                        <div >
+                                            <p>TOTAL CONFIRMED</p>
+                                            <div class="indiaConfirmed" id="itotalConfirmed"></div>
+                                       </div>
+                                       <div>
+                                        <p>TOTAL RECOVERED</p>
+                                        <div class="indiaRecovered" id="itotalRecovered"></div>
+                                      </div>
+                                        <div>
+                                        <p>TOTAL DEATHS</p>
+                                        <div class="indiaDeath" id="itotaldeaths"></div>  
+                                      </div>
+                                  </div>
+                            </section>
+                            <section class="section4"><h1>INDIA</h1>
+                                <br>
+                                <div style="height:80%; width:80%;align-content:center;">
+                                <canvas id="DoughNutChart"></canvas>
+                                </section>
+                                <script src="js/india_piechart.js"></script>
+                            </section>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

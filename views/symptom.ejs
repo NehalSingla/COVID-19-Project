@@ -1,77 +1,98 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-	<title>	SYMPTOMS</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+<title>SYMTOMS</title>
 
-  <style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<link rel="stylesheet" href="css/partials.css">
+<link rel="stylesheet" href="css/mainstyle.css">
+
+<!--style>
     #video
     {
       float:right;
       width:25%;
     }
-  </style>
+  </style-->
 </head>
-<body >
+<body>
+  <%- include('partials/topbar.ejs') %>
+  <div id="viewscreen" >
+      <%- include('partials/sidebar.ejs') %>
+          <div id="rightview" >
+              <div class="container" style="padding:0;">
+                  <div class="row" style="color:#474e5d;">
+                      <div class="col-lg-12" style="padding:0">
+                          <div class="container">
+                              <div class="col-sm-3"></div>s
+  
+                              
+                              <h1 style="margin-top: 5%;" >COVID-19 Coronavirus - Symptoms</h1>
+
+                              <p>Doctors are learning new things about this virus every day. So far, we know that COVID-19 may not initially cause any symptoms for some people.</p>
+                            
+                            <p>You may carry the virus for 2 days or up to 2 weeksTrusted Source before you notice symptoms.</p>
+                            
+                            <h3>Some common symptoms that have been specifically linked to COVID-19 include:</h3><br>
+                            <div>
+                            <ul>
+                            <li>shortness of breath</li>
+                            <li>having a cough that gets more severe over time</li>
+                            <li>a low-grade fever that gradually increases in temperature</li>
+                            <li>fatigue</li>
+                            </ul><br>
+                            
+                            </div>
+                            <h3>Less common symptoms include:</h3><br>
+                            <ul>
+                            <li>chills</li>
+                            <li>repeated shaking with chills</li>
+                            <li>sore throat</li>
+                            <li>headache</li>
+                            <li>loss of taste</li>
+                            <li>loss of smell</li>
+                            </ul>
+                            <br>
+                            <h3>These symptoms may become more severe in some people. Call emergency medical services if you or someone you care for have any of the following symptoms:</h3>
+                            <ul>
+                            <li>trouble breathing</li>
+                            <li>blue lips or face</li>
+                            <li>persistent pain or pressure in the chest</li>
+                            <li>confusion</li>
+                            <li>excessive drowsiness</li>
+                            </ul>
+                            </div>
+                            <!--iframe width="420" height="345" id="video" src="https://www.youtube.com/embed/oGruT7Fd54E">
+                            </iframe-->
+                            <div id="Container"
+                             style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+                             <iframe id="ViostreamIframe"
+                              width="100%" height="50%"
+                              src="https://www.youtube.com/embed/U8r3oTVMtQ0"
+                              frameborder="0" allowfullscreen=""
+                              style="position:absolute; top:0; left: 0"></iframe>
+                            </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </body>
 	<div class="container-fluid" style="padding-top: 20px;background-color: #474e5d; 
-    color: #ffffff;">
+    color:white">
 	
 
-	<h1 >COVID-19 Coronavirus - Symptoms</h1>
-
-  <p>Doctors are learning new things about this virus every day. So far, we know that COVID-19 may not initially cause any symptoms for some people.</p>
-
-<p>You may carry the virus for 2 days or up to 2 weeksTrusted Source before you notice symptoms.</p>
-
-<h3>Some common symptoms that have been specifically linked to COVID-19 include:</h3><br>
-<div>
-<ul>
-<li>shortness of breath</li>
-<li>having a cough that gets more severe over time</li>
-<li>a low-grade fever that gradually increases in temperature</li>
-<li>fatigue</li>
-</ul><br>
-
-</div>
-<h3>Less common symptoms include:</h3><br>
-<ul>
-<li>chills</li>
-<li>repeated shaking with chills</li>
-<li>sore throat</li>
-<li>headache</li>
-<li>loss of taste</li>
-<li>loss of smell</li>
-</ul>
-<br>
-<h3>These symptoms may become more severe in some people. Call emergency medical services if you or someone you care for have any of the following symptoms:</h3>
-<ul>
-<li>trouble breathing</li>
-<li>blue lips or face</li>
-<li>persistent pain or pressure in the chest</li>
-<li>confusion</li>
-<li>excessive drowsiness</li>
-</ul>
-</div>
-<!--iframe width="420" height="345" id="video" src="https://www.youtube.com/embed/oGruT7Fd54E">
-</iframe-->
-<div id="Container"
- style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
- <iframe id="ViostreamIframe"
-  width="100%" height="50%"
-  src="https://www.youtube.com/embed/U8r3oTVMtQ0"
-  frameborder="0" allowfullscreen=""
-  style="position:absolute; top:0; left: 0"></iframe>
-</div>
 
 
-</body>
+
 </html>

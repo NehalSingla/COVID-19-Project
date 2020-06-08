@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+<title>Travel Advisory</title>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<link rel="stylesheet" href="css/partials.css">
+<link rel="stylesheet" href="css/mainstyle.css">
+<link rel="stylesheet" href="css/travelAdvisory.css">
+
+</head>
+
+<body>
+<%- include('partials/topbar.ejs') %>
+<div id="viewscreen" >
+    <%- include('partials/sidebar.ejs') %>
+        <div id="rightview" >
+            <div class="container" style="padding:0;">
+                <div class="row">
+                    <div class="col-lg-12" style="padding:0">
+                        <div class="container">
+                            <div class="col-sm-3"></div>s
+
+                            <header style="margin-top: 5%;"><h1>COVID-19 Travel Advisory</h1></header>
+                            <div class="cont">
+                            <div class="select-country">
+                                <center><select class="country-name" id="country_names">
+                                </select></center>
+                            </div>
+                    
+                            <div class="country-results">
+                                <div class="box">
+                                    <p class="heading" style="color: purple;">Message</p>
+                                    <p class="numbers" id="confirmedCases"></p>
+                                </div>
+                    
+                            </div>
+                        </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/travelAdvisory.js"></script>
+    </body>
+</html>

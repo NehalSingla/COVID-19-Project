@@ -1,24 +1,42 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
-        <title>PRECAUTIONS</title>
-        <link rel="stylesheet" href="../css/precaution.css">
-        </head>
-        <body>
-            <header><h1>PRECAUTION IS BETTER THAN CURE!</h1></header>
-            <section class="section1">
-                <!-- <div class="image"> -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+<title>PRECAUTIONS</title>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   
+<link rel="stylesheet" href="css/partials.css">
+<link rel="stylesheet" href="css/mainstyle.css">
+<link rel="stylesheet" href="../css/precaution.css">
+
+</head>
+
+<body>
+<%- include('partials/topbar.ejs') %>
+<div id="viewscreen" >
+    <%- include('partials/sidebar.ejs') %>
+
+        <header style="margin-top: 5%;"><h1>PRECAUTION IS BETTER THAN CURE!</h1></header>
+            
+        <section class="section1 ">
+                
                     <h2>NO TOUCH</h2>
                     <img src="../images/noHandshake.png" style="height:300px;width:300px;">
-                <!-- </div> -->
+             
             </section>
-            <section class="section2">
+            <section class="section2 ">
                 <h2>COUGH/SNEEZE IN ELBOW</h2>
                 <img src="../images/elbow_cough.jpg" style="height:300px;width:300px;">
 
             </section>
+        
             <section class="section3">
                 <h2>MAINTAIN DISTANCE</h2>
                 <img src="../images/distance.png" style="height:300px;width:300px;">
@@ -40,6 +58,7 @@
 
             </section>
 
-        </body>
-        </html>
-
+                            </div>
+                        
+    </body>
+</html>

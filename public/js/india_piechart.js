@@ -6,7 +6,6 @@ async function getCovidAPI()
 const jsondata =await fetch('https://api.covid19india.org/data.json');
 
 const jsdata=await jsondata.json();
-console.log(jsdata);
 
 const tc=jsdata.statewise[0].confirmed;
 const tr=jsdata.statewise[0].recovered;

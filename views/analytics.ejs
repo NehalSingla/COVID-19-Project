@@ -4,30 +4,47 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
         <title>ANALYTICS</title>
-        <link rel="stylesheet" href="analyticstyle.css">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+        
+<!-- <link rel="stylesheet" href="css/style.css"> -->
+<!-- <link rel="stylesheet" href="css/partials.css">
+<link rel="stylesheet" href="css/mainstyle.css"> -->
+
+        <link rel="stylesheet" href="css/analyticstyle.css">
 
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <!-- to get total confirmed recovered and death cases of world as well as india -->
         <script src="total_data.js"></script>
-        <header><h1 style="color:white;">COVID-19 INDIA ANALYTICS</h1></header>
+     
+        <li class="list" id="sidebar-adduser">
+                <a href="/">
+                    <span class="list-span">
+                        <i class="fas fa-home" id="icon"></i>
+                    </span>
+                   GO TO HOME
+                </a>
+             </li>
+        
+        <header><h1 style="color:white;">COVID-19 INDIA ANALYTICS</h1></header></span>
         <section class="section1"><h1>TOTAL CONFIRMED CASES</h1>
 
 
-         <div style="height:600px; width:600px">
+         <div style="height:800px; width:100%">
                 <canvas id="confirmed-line-chart"></canvas>
             </div>
         </section>
         <section class="section2"><h1>TOTAL RECOVERED CASES</h1>
 
-        <div style="height:600px;width:600px;">
+        <div style="height:800px;width:100%">
                 <canvas id="recovered-line-graph"></canvas>
             </div>
            
         </section>
         <section class="section3"><h1>TOTAL DEATHS</h1>
-            <div style="height:600px;width:600px;">
+            <div style="height:800px;width:100%;">
                     <canvas id="death-line-graph"></canvas>
                 </div>
         
@@ -36,7 +53,7 @@
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-            <div style="height:600px;width:600px;">
+            <div style="height:800px;width:100%;">
         <canvas id="genderChart"></canvas>
         <script>
                         const GCHART =document.getElementById('genderChart');
@@ -98,14 +115,14 @@
             </section>
             <section class="section5"><h1>TOTAL SAMPLES TESTED</h1>
 
-                <div style="height:600px; width:600px">
+                <div style="height:800px; width:100%">
                         <canvas id="testschart"></canvas>
                     </div>
             </section>
             <section class="section6"><h1>NATIONALITY</h1>
 
 
-            <div style="height:600px;width:600px ;">
+            <div style="height:600px;width:100%;">
                     <canvas id="Nationality"></canvas>
                     </div>
 
