@@ -31,7 +31,7 @@ async function getCovidAPI()
 
                 };
                 let pieChart = new Chart( WorldPieCHART, {
-                type:'pie',
+                type:'doughnut',
                 data:data1,
                 options:{}
                 });

@@ -26,7 +26,7 @@ backgroundColor: [
 ]
 };
 let pieChart = new Chart( IndiaCHART,{
-type:'pie',
+type:'doughnut',
 data:data1,
 options:{
 	
