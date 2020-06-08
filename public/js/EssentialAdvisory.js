@@ -40,8 +40,11 @@ state_names.addEventListener('change', function(event) {
     .remove()
     .end()
 
-    $('myTable tr').remove();
-
+var table=document.getElementById('myTable');
+       while(table.rows.length>1){
+        table.deleteRow(1);
+    }
+    
 	for(i in arr.resources) {
 		if(arr.resources[i].state == event.target.value) {
 			fetchcities(arr.resources[i]);
@@ -73,7 +76,10 @@ function fetchcities(statesData) {
 }
 
 city.addEventListener('click',function(event) { 
-        $('myTable tr').remove();
+       var table=document.getElementById('myTable');
+       while(table.rows.length>1){
+        table.deleteRow(1);
+      }
 
 	var k=0;
 	for(i in arr.resources) {
