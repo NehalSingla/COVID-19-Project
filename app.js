@@ -2,7 +2,9 @@
 var path=require('path');
 var app=express();
 var ejs = require('ejs');
-var port=8000;
+//var port=8000;
+var port = process.env.PORT || 8000;
+
 
 /* public */
 app.use(express.static(path.join(__dirname,'/public')))
